@@ -9,7 +9,11 @@ const runMigrate = async () => {
     throw new Error("DATABASE_URL is not defined");
   }
 
-  const connection = postgres(process.env.DATABASE_URL, { max: 1 });
+  // use for location postgres instance
+  // const connection = postgres(process.env.DATABASE_URL, { max: 1 });
+
+  // use for nextjs deployment
+  const connection = postgres({ max: 1, ssl: "require" });
 
   const db = drizzle(connection);
 
