@@ -18,7 +18,7 @@ export default function Icon() {
       <div
         style={{
           fontSize: 24,
-          background: "black",
+          background: "407C4A",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -27,7 +27,7 @@ export default function Icon() {
           color: "white",
         }}
       >
-        L-OS
+        L
       </div>
     ),
     // ImageResponse options
