@@ -7,6 +7,9 @@ export default async function Home() {
   return (
     <main>
       <h1>Hello</h1>
+      <Link href="/habits">
+        <Button variant="link">Habits</Button>
+      </Link>
       <pre>{JSON.stringify(session, null, 2)}</pre>
       <div className="mt-4">
         {session?.user ? (

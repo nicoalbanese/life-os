@@ -8,6 +8,41 @@
       "when": 1688047197758,
       "tag": "0000_wise_namorita",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1688293896853,
+      "tag": "0001_ambitious_hedge_knight",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1688294174613,
+      "tag": "0002_quick_the_executioner",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1688310026936,
+      "tag": "0003_peaceful_mac_gargan",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1688312802110,
+      "tag": "0004_reflective_ultragirl",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1688313149072,
+      "tag": "0005_previous_ben_grimm",
+      "breakpoints": true
     }
   ]
 }

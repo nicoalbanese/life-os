@@ -9,9 +9,9 @@ declare module "next-auth" {
       /** The user's email. */
       email: String;
       /** The user's id. */
-      id: Number;
+      id: number;
       /** The user's name. */
       name: String | null;
-    } & DefaultSession["user"];
+    };
   }
 }

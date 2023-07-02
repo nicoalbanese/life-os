@@ -1,0 +1,1 @@
+ALTER TABLE "completions" ALTER COLUMN "date" SET DATA TYPE timestamp;
