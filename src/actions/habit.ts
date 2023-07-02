@@ -40,6 +40,7 @@ export const editHabit = async ({
       and(eq(habits.id, updatedHabit.id), eq(habits.userId, session?.user.id!))
     );
   revalidatePath("/habits/edit");
+  revalidatePath("/habits");
   return { habit: newHabit };
 };
 

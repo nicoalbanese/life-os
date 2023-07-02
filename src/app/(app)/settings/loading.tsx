@@ -1,4 +1,3 @@
-import LoadingSpinner from "@/components/LoadingSpinner";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
@@ -9,15 +8,15 @@ export default function Loading() {
       <div className="mt-4 opacity-50 animate-pulse">
         <div>
           <Label>Name</Label>
-          <Input />
+          <Input disabled />
         </div>
         <div>
           <Label>Email</Label>
-          <Input />
+          <Input disabled />
         </div>
         <div>
           <Label>Location</Label>
-          <Input />
+          <Input disabled />
         </div>
       </div>
     </main>
