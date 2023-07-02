@@ -13,8 +13,8 @@ export default function Loading() {
               {"Active"}
             </Badge>
             <div className="px-1">
-              <h3 className="bg-slate-100 w-20 h-10">Habit</h3>
-              <p className="bg-slate-100 w-full h-10"></p>
+              <h3 className="">Habit</h3>
+              <p className=""></p>
             </div>
           </div>
           <Button variant={"default"}>Edit</Button>
