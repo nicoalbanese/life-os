@@ -8,7 +8,7 @@ export default async function Settings() {
   return (
     <main>
       <h2>Settings</h2>
-      <AccountSettings session={session} location={user.location} />
+      <AccountSettings session={session} location={user.currentLocation} />
     </main>
   );
 }

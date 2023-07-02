@@ -1,7 +1,7 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { type User, users } from "@/lib/db/schema";
+import { users } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 interface UpdateUserInterface {
@@ -16,6 +16,7 @@ export const updateUser = async (user: UpdateUserInterface) => {
     .set({ ...user })
     .where(eq(users.id, user.id!))
     .returning();
+
   revalidatePath("/");
   return { user: updatedUser };
 };
