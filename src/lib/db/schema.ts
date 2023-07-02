@@ -14,7 +14,10 @@ export const users = pgTable("users", {
   name: text("name"),
   email: text("email").notNull(),
   password: text("password").notNull(),
+  currentLocation: text("current_location"),
 });
+
+export type User = InferModel<typeof users>;
 
 export const habits = pgTable("habits", {
   id: serial("id").primaryKey(),

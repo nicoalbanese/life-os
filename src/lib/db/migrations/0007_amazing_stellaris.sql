@@ -1,0 +1,1 @@
+ALTER TABLE "users" RENAME COLUMN "location" TO "current_location";

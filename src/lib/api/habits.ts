@@ -1,14 +1,10 @@
 import { and, eq, sql } from "drizzle-orm";
 import { db } from "../db";
 import { habits as HABITS, completions } from "../db/schema";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { getSession } from "../auth/utils";
 
-const getSession = async () => {
-  return getServerSession(authOptions);
-};
 export const getHabitsWithCompletions = async () => {
-  const session = await getSession();
+  const { session } = await getSession();
   const habits = await db
     .select()
     .from(HABITS)
@@ -19,15 +15,18 @@ export const getHabitsWithCompletions = async () => {
         eq(HABITS.id, completions.habitId),
         eq(completions.date, sql`CURRENT_DATE`)
       )
-    );
+    )
+    .orderBy(HABITS.id);
   return habits;
 };
 
 export const getHabits = async () => {
-  const session = await getSession();
+  const { session } = await getSession();
   const habits = await db
     .select()
     .from(HABITS)
-    .where(and(eq(HABITS.userId, session?.user.id!)));
+    .where(and(eq(HABITS.userId, session?.user.id!)))
+    .orderBy(HABITS.id);
+
   return habits;
 };

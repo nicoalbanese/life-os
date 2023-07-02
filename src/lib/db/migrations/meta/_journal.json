@@ -43,6 +43,20 @@
       "when": 1688313149072,
       "tag": "0005_previous_ben_grimm",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1688330276103,
+      "tag": "0006_thankful_silverclaw",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1688330376553,
+      "tag": "0007_amazing_stellaris",
+      "breakpoints": true
     }
   ]
 }
