@@ -1,7 +1,7 @@
 import CreateHabitModal from "@/components/habits/CreateHabitModal";
 import HabitCard from "@/components/habits/HabitCard";
 import { Button } from "@/components/ui/button";
-import { getHabitsWithCompletions } from "@/lib/api/habits";
+import { getHabitsWithCompletions, getStreaks } from "@/lib/api/habits";
 import Link from "next/link";
 
 export const revalidate = 5;
@@ -11,6 +11,7 @@ export default async function Habits() {
 
   return (
     <main>
+      {/* <pre>{JSON.stringify(habits, null, 2)}</pre> */}
       <div className="flex justify-between mb-4">
         <h1>Habits</h1>
         <Link href="/habits/edit">
@@ -23,12 +24,17 @@ export default async function Habits() {
         {habits.length > 0 ? (
           <div className="grid sm:grid-cols-2 grid-cols-1 gap-3">
             {habits.map((habitRecord) => {
-              const { habits: habit, completions: completion } = habitRecord;
+              const {
+                habits: habit,
+                completions: completion,
+                streaks: streak,
+              } = habitRecord;
               return (
                 <HabitCard
                   key={habit.id.toString()}
                   habit={habit}
                   completion={completion}
+                  streak={streak}
                 />
               );
             })}

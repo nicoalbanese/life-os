@@ -64,6 +64,20 @@
       "when": 1688466141126,
       "tag": "0008_fancy_crusher_hogan",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1688562504730,
+      "tag": "0009_silent_radioactive_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "5",
+      "when": 1688563011340,
+      "tag": "0010_clear_elektra",
+      "breakpoints": true
     }
   ]
 }

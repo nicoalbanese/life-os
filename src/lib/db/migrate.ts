@@ -10,10 +10,10 @@ const runMigrate = async () => {
   }
 
   // use for location postgres instance
-  // const connection = postgres(process.env.DATABASE_URL, { max: 1 });
+  const connection = postgres(process.env.DATABASE_URL, { max: 1 });
 
   // use for nextjs deployment
-  const connection = postgres({ max: 1, ssl: "require" });
+  // const connection = postgres({ max: 1, ssl: "require" });
 
   const db = drizzle(connection);
 

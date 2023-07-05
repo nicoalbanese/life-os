@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
 import { db } from "../db";
 import { highlights } from "../db/schema";
 import { getSession } from "../auth/utils";
@@ -8,7 +8,12 @@ export async function getHighlight() {
   const [highlight] = await db
     .select()
     .from(highlights)
-    .where(eq(highlights.userId, session?.user.id!));
+    .where(
+      and(
+        eq(highlights.userId, session?.user.id!),
+        eq(highlights.date, sql`CURRENT_DATE`)
+      )
+    );
   if (highlight === undefined) {
     return { highlight: null };
   }

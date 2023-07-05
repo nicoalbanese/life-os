@@ -51,3 +51,14 @@ export const highlights = pgTable("highlights", {
 });
 
 export type Highlight = InferModel<typeof highlights>;
+
+export const streaks = pgTable("streaks", {
+  id: serial("id").primaryKey(),
+  habitId: integer("habit_id")
+    .notNull()
+    .references(() => habits.id),
+  firstDay: date("first_day").notNull().defaultNow(),
+  lastDay: date("last_day").notNull().defaultNow(),
+});
+
+export type Streak = InferModel<typeof streaks>;

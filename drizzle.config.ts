@@ -6,8 +6,8 @@ export default {
   schema: "./src/lib/db/schema.ts",
   out: "./src/lib/db/migrations",
   driver: "pg",
-  // dbCredentials: {
-  //   connectionString: process.env.DATABASE_URL!,
-  // },
-  // // breakpoints: true,
+  dbCredentials: {
+    connectionString: process.env.DATABASE_URL!,
+  },
+  // breakpoints: true,
 } satisfies Config;

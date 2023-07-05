@@ -1,5 +1,5 @@
 "use client";
-import { Completion, Habit } from "@/lib/db/schema";
+import { Completion, Habit, Streak } from "@/lib/db/schema";
 import { Button } from "../ui/button";
 import {
   Card,
@@ -11,13 +11,16 @@ import {
 import { useTransition } from "react";
 import { addCompletion } from "@/actions/completion";
 import LoadingSpinner from "../LoadingSpinner";
+import { differenceInDays } from "@/lib/utils";
 
 export default function HabitCard({
   habit,
   completion,
+  streak,
 }: {
   habit: Habit;
   completion: Completion | null;
+  streak: Streak | null;
 }) {
   let [isPending, startTransition] = useTransition();
   return (
@@ -31,10 +34,18 @@ export default function HabitCard({
       <CardContent className="">
         <div className="flex items-center justify-between ">
           {completion == null ? (
-            <div className="bg-slate-100 w-full p-6 flex items-center justify-center flex-col rounded-md">
-              <p className="mb-4 text-sm font-light">
-                Not completed yet today.
-              </p>
+            <div className="bg-slate-100 h-32 w-full p-3 flex items-center justify-around flex-col rounded-md">
+              {streak ? (
+                <p className="text-sm font-bold">
+                  🔥{" "}
+                  {differenceInDays(
+                    new Date(streak.lastDay),
+                    new Date(streak.firstDay)
+                  )}{" "}
+                  day streak 🔥
+                </p>
+              ) : null}
+              <p className="text-sm font-light">Not completed yet today.</p>
               <Button
                 size="sm"
                 variant="outline"

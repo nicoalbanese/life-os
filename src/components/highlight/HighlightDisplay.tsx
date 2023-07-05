@@ -1,4 +1,5 @@
 import { Highlight } from "@/lib/db/schema";
+import { Button } from "../ui/button";
 
 export default function HighlightDisplay({
   highlight,
@@ -6,8 +7,9 @@ export default function HighlightDisplay({
   highlight: Highlight;
 }) {
   return (
-    <div>
-      <p className="p-4 bg-slate-100">{highlight.content}</p>
+    <div className="p-4 bg-slate-100 flex justify-between items-center my-4 rounded-lg">
+      <p className="">{highlight.content}</p>
+      <Button>Complete</Button>
     </div>
   );
 }
