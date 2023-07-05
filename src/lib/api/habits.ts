@@ -38,20 +38,3 @@ export const getHabits = async () => {
 
   return habits;
 };
-
-export const getStreaks = async () => {
-  const { session } = await getSession();
-  const habits = await db
-    .select()
-    .from(HABITS)
-    .where(and(eq(HABITS.userId, session?.user.id!), eq(HABITS.active, true)))
-    .leftJoin(
-      streaks,
-      and(
-        eq(HABITS.id, streaks.habitId),
-        eq(streaks.lastDay, sql`CURRENT_DATE - interval '1 day'`)
-      )
-    )
-    .orderBy(HABITS.id);
-  return habits;
-};

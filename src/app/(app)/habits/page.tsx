@@ -1,7 +1,7 @@
 import CreateHabitModal from "@/components/habits/CreateHabitModal";
 import HabitCard from "@/components/habits/HabitCard";
 import { Button } from "@/components/ui/button";
-import { getHabitsWithCompletions, getStreaks } from "@/lib/api/habits";
+import { getHabitsWithCompletions } from "@/lib/api/habits";
 import Link from "next/link";
 
 export const revalidate = 5;
