@@ -3,6 +3,7 @@ import {
   boolean,
   date,
   integer,
+  pgEnum,
   pgTable,
   serial,
   text,
@@ -62,3 +63,13 @@ export const streaks = pgTable("streaks", {
 });
 
 export type Streak = InferModel<typeof streaks>;
+
+export const dates = pgTable("dates", {
+  id: serial("id").primaryKey(),
+  date: date("date").notNull(),
+  userId: integer("user_id").references(() => users.id),
+  type: text("type", { enum: ["days_until", "days_since"] }),
+  title: text("title").notNull(),
+});
+
+export type DBDate = InferModel<typeof dates>;

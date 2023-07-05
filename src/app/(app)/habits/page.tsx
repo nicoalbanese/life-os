@@ -15,7 +15,7 @@ export default async function Habits() {
       <div className="flex justify-between mb-4">
         <h1>Habits</h1>
         <Link href="/habits/edit">
-          <Button variant={"default"} size="sm">
+          <Button variant={"outline"} size="sm">
             Edit
           </Button>
         </Link>

@@ -1,0 +1,1 @@
+ALTER TABLE "dates" ADD COLUMN "title" text NOT NULL;

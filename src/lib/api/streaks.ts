@@ -1,4 +1,4 @@
-import { and, eq, sql } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { db } from "../db";
 import { habits as HABITS, streaks } from "../db/schema";
 import { getSession } from "../auth/utils";
