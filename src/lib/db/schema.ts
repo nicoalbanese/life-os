@@ -39,3 +39,15 @@ export const completions = pgTable("completions", {
     .references(() => habits.id),
 });
 export type Completion = InferModel<typeof completions>;
+
+export const highlights = pgTable("highlights", {
+  id: serial("id").primaryKey(),
+  date: date("date").notNull().defaultNow(),
+  userId: integer("user_id")
+    .notNull()
+    .references(() => users.id),
+  content: text("content").notNull(),
+  completed: boolean("completed").default(false).notNull(),
+});
+
+export type Highlight = InferModel<typeof highlights>;
