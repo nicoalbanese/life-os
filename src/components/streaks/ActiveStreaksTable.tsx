@@ -20,6 +20,7 @@ export default function ActiveStreaksTable({ habitsWithStreaks }: Props) {
         <TableRow>
           <TableHead className="">Habit</TableHead>
           <TableHead>First Day</TableHead>
+          <TableHead>Most Recent Day</TableHead>
           <TableHead className="text-right">Streak Length</TableHead>
         </TableRow>
       </TableHeader>
@@ -30,6 +31,13 @@ export default function ActiveStreaksTable({ habitsWithStreaks }: Props) {
             <TableCell>
               {
                 new Date(streak.streaks?.firstDay!)
+                  .toLocaleString()
+                  .split(",")[0]
+              }
+            </TableCell>
+            <TableCell>
+              {
+                new Date(streak.streaks?.lastDay!)
                   .toLocaleString()
                   .split(",")[0]
               }
