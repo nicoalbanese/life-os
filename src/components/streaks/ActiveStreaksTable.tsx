@@ -10,7 +10,7 @@ import { Habit, Streak } from "@/lib/db/schema";
 import { differenceInDays } from "@/lib/utils";
 
 interface Props {
-  habitsWithStreaks: { habits: Habit; streaks: Streak | null }[];
+  habitsWithStreaks: { habits: Habit; streaks: Streak }[];
 }
 
 export default function ActiveStreaksTable({ habitsWithStreaks }: Props) {
