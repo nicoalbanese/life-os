@@ -66,7 +66,7 @@ export default function EditQuoteModal({ quote }: { quote: Quote }) {
             <Label htmlFor="active" className="text-right">
               Active
             </Label>
-            <Switch defaultChecked={quote.active!} ref={activeRef} />
+            {/* <Switch defaultChecked={quote.active!} ref={activeRef} /> */}
           </div>
         </div>
         <DialogFooter>
