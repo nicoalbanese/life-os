@@ -13,7 +13,7 @@ export default function EditQuoteListItem({ quote }: { quote: Quote }) {
             <p>- {quote.author}</p>
           </div>
         </div>
-        <EditHabitModal habit={habit} />
+        {/* <EditHabitModal habit={habit} /> */}
       </div>
       <Separator />
     </>
