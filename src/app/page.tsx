@@ -9,7 +9,7 @@ export default async function Home() {
       <Link href="/habits">
         <Button variant="outline">Habits Home</Button>
       </Link>
-      <div className="mt-4">
+      <div className="mt-4 ">
         {session?.user ? (
           <Link href="api/auth/signout">
             <Button variant="destructive">Sign out</Button>
@@ -19,6 +19,7 @@ export default async function Home() {
             <Button variant={"default"}>Sign in</Button>
           </Link>
         )}
+        
       </div>
     </main>
   );

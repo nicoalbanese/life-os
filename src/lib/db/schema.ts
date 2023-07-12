@@ -8,6 +8,7 @@ import {
   serial,
   text,
   timestamp,
+  varchar,
 } from "drizzle-orm/pg-core";
 
 export const users = pgTable("users", {
@@ -73,3 +74,12 @@ export const dates = pgTable("dates", {
 });
 
 export type DBDate = InferModel<typeof dates>;
+
+export const quotes = pgTable("quotes", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id").references(() => users.id),
+  quote: text("quote").notNull(),
+  author: varchar("author"),
+});
+
+export type Quote = InferModel<typeof quotes>;
