@@ -7,7 +7,7 @@ export default async function Home() {
   return (
     <main>
       <Link href="/habits">
-        <Button variant="outline">Habits Home</Button>
+        <Button variant="outline">Go to habits</Button>
       </Link>
       <div className="mt-4 ">
         {session?.user ? (
@@ -19,7 +19,6 @@ export default async function Home() {
             <Button variant={"default"}>Sign in</Button>
           </Link>
         )}
-        
       </div>
     </main>
   );
