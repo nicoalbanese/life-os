@@ -6,7 +6,10 @@ import { and, eq, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 
 export const addCompletion = async ({ habitId }: { habitId: number }) => {
-  const newCompletion = await db.insert(completions).values({ habitId });
+  const newCompletion = await db
+    .insert(completions)
+    .values({ habitId })
+    .returning();
   const [streak] = await db
     .select()
     .from(streaks)

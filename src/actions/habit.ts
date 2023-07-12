@@ -16,9 +16,10 @@ export const addHabit = async ({
   desc: string;
 }) => {
   const { session } = await getSession();
-  const newHabit = await db
+  const [newHabit] = await db
     .insert(habits)
-    .values({ name, description: desc, userId: session?.user.id! });
+    .values({ name, description: desc, userId: session?.user.id! })
+    .returning();
   return { habit: newHabit };
 };
 interface UpdatedHabit {
@@ -33,12 +34,13 @@ export const editHabit = async ({
   updatedHabit: UpdatedHabit;
 }) => {
   const { session } = await getSession();
-  const newHabit = await db
+  const [newHabit] = await db
     .update(habits)
     .set(updatedHabit)
     .where(
       and(eq(habits.id, updatedHabit.id), eq(habits.userId, session?.user.id!))
-    );
+    )
+    .returning();
   revalidatePath("/habits/edit");
   revalidatePath("/habits");
   return { habit: newHabit };

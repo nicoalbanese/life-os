@@ -10,7 +10,8 @@ export async function createHighlight({ content }: { content: string }) {
   const { session } = await getSession();
   const [highlight] = await db
     .insert(highlights)
-    .values({ userId: session?.user.id!, content });
+    .values({ userId: session?.user.id!, content })
+    .returning();
   revalidatePath("/goals");
   return { highlight };
 }
@@ -29,7 +30,8 @@ export async function completeHighlight({
         eq(highlights.userId, session?.user.id!),
         eq(highlights.id, highlightId)
       )
-    );
+    )
+    .returning();
   revalidatePath("/goals");
   return { highlight };
 }
