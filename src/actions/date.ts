@@ -8,12 +8,15 @@ import { revalidatePath } from "next/cache";
 
 export const createDate = async () => {
   const { session } = await getSession();
-  const [date] = await db.insert(dates).values({
-    date: sql`CURRENT_DATE`,
-    title: "New Date",
-    type: "days_until",
-    userId: session?.user.id!,
-  });
+  const [date] = await db
+    .insert(dates)
+    .values({
+      date: sql`CURRENT_DATE`,
+      title: "New Date",
+      type: "days_until",
+      userId: session?.user.id!,
+    })
+    .returning();
   revalidatePath("/dates/edit");
   return { date };
 };
