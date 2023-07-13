@@ -7,7 +7,8 @@ export default {
   out: "./src/lib/db/migrations",
   driver: "pg",
   dbCredentials: {
-    connectionString: process.env.DATABASE_URL!,
+    connectionString: `${process.env.DRIZZLE_DATABASE_URL!}?sslmode=require`,
+    ssl: true,
   },
   // breakpoints: true,
 } satisfies Config;

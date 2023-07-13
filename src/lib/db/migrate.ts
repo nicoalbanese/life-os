@@ -17,6 +17,7 @@ const runMigrate = async () => {
     ? (client = productionClient)
     : (client = localClient);
 
+  // change this to production client if need to migrate production db
   const db = drizzle(client);
 
   console.log("⏳ Running migrations...");
