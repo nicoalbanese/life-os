@@ -6,7 +6,7 @@ import { getTopStreaks } from "@/lib/api/streaks";
 import Link from "next/link";
 
 export default async function Stats() {
-  const habitsWithStreaks = await getTopStreaks();
+  const topStreaks = await getTopStreaks();
   const { dates } = await getDates();
   return (
     <main>
@@ -31,9 +31,9 @@ export default async function Stats() {
       </section>
       <section className="border-t border-b border-secondary my-4 py-4">
         {/* Consider changing this to longest streaks */}
-        <h3 className="mb-2">🔥 Active Streaks 🔥</h3>
-        {habitsWithStreaks.length > 0 ? (
-          <ActiveStreaksTable habitsWithStreaks={habitsWithStreaks} />
+        <h3 className="mb-2">🔥 Top Streaks 🔥</h3>
+        {topStreaks.length > 0 ? (
+          <ActiveStreaksTable topStreaks={topStreaks} />
         ) : (
           <div>No active streaks!</div>
         )}

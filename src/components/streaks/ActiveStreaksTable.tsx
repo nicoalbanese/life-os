@@ -6,48 +6,39 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Habit, Streak } from "@/lib/db/schema";
-import { differenceInDays } from "@/lib/utils";
+import { TopStreak } from "@/lib/api/streaks";
+import { isActiveStreak } from "@/lib/utils";
 
 interface Props {
-  habitsWithStreaks: { habits: Habit; streaks: Streak }[];
+  topStreaks: TopStreak[];
 }
 
-export default function ActiveStreaksTable({ habitsWithStreaks }: Props) {
+export default function ActiveStreaksTable({ topStreaks }: Props) {
   return (
     <Table>
       <TableHeader>
         <TableRow>
           <TableHead className="">Habit</TableHead>
+          <TableHead className="">Active?</TableHead>
           <TableHead>First Day</TableHead>
           <TableHead>Most Recent Day</TableHead>
           <TableHead className="text-right">Streak Length</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
-        {habitsWithStreaks.map((streak) => (
-          <TableRow key={streak.habits.id}>
-            <TableCell className="font-medium">{streak.habits.name}</TableCell>
+        {topStreaks.map((streak) => (
+          <TableRow key={streak.name}>
+            <TableCell className="font-medium">{streak.name}</TableCell>
+            <TableCell>{isActiveStreak(new Date(streak.last_day))}</TableCell>
+
             <TableCell>
-              {
-                new Date(streak.streaks?.firstDay!)
-                  .toLocaleString()
-                  .split(",")[0]
-              }
+              {new Date(streak.first_day).toLocaleString().split(",")[0]}
             </TableCell>
             <TableCell>
-              {
-                new Date(streak.streaks?.lastDay!)
-                  .toLocaleString()
-                  .split(",")[0]
-              }
+              {new Date(streak.last_day!).toLocaleString().split(",")[0]}
             </TableCell>
             <TableCell className="text-right">
-              {differenceInDays(
-                new Date(streak.streaks?.lastDay!),
-                new Date(streak.streaks?.firstDay!)
-              )}{" "}
-              days
+              {streak.streak_length} days
             </TableCell>
           </TableRow>
         ))}

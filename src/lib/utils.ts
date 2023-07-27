@@ -26,3 +26,20 @@ export function daysUntil(futureDate: Date): number {
 
   return daysDiff < 0 ? 0 : daysDiff; // If the future date has passed, return 0
 }
+
+export function isActiveStreak(mostRecentDate: Date): "true" | "false" {
+  const today = new Date();
+  const yesterday = new Date();
+  yesterday.setDate(today.getDate() - 1);
+  const yesterdayBaseDate = yesterday
+    .toUTCString()
+    .split(" ")
+    .slice(0, 4)
+    .join(" ");
+  const mostRecentBaseDate = mostRecentDate
+    .toUTCString()
+    .split(" ")
+    .slice(0, 4)
+    .join(" ");
+  return yesterdayBaseDate == mostRecentBaseDate ? "true" : "false";
+}
